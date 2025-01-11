@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import ProductsReducer from './productSlice.js'
-import CartReducer from './cartSlice.js'
-import ThemeReducer from './themeSlice.js'
-import WishListReducer from './wishListSlice.js'
+import ProductsReducer from './slice/productSlice'
+import CartReducer from './slice/cartSlice'
+import ThemeReducer from './slice/themeSlice'
+import WishListReducer from './slice/wishListSlice'
 
 export const store = configureStore({
     reducer:{
@@ -11,6 +11,8 @@ export const store = configureStore({
         wishList:WishListReducer,
         theme:ThemeReducer
 
-    }
+    },
+    
+
 })
 
