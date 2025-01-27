@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 // Utility function to find item in the cart
 const findItemIndex = (state, action) =>
-  state.findIndex((cartItem) => cartItem.id === action.payload.id); // Make sure the product has a unique 'id'
+  state.findIndex((cartItem) => cartItem.productId === action.payload.productId); // Make sure the product has a unique 'id'
 
 const cartSlice = createSlice({
   name: 'cartItems',
