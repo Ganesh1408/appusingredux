@@ -1,39 +1,40 @@
 
-import {   createAsyncThunk, createSlice  } from '@reduxjs/toolkit'
+import {    createSlice  } from '@reduxjs/toolkit'
 // import { ProductsList } from '../../ProductsList/productsList'
-export const fetchProducts = createAsyncThunk(
-    'updateAllProducts',
-    async()=>{
-        try{
-            const response = await fetch('https://fakestoreapi.com/products')
-            return response.json(   )
-        }catch(err){
-            console.log(err)
-        }
+// export const fetchProducts = createAsyncThunk(
+//     'updateAllProducts',
+//     async()=>{
+//         try{
+//             const response = await fetch('https://fakestoreapi.com/products')
+//             return response.json(   )
+//         }catch(err){
+//             console.log(err)
+//         }
 
-})
+// })
 
  const productSlice = createSlice({
     name:'Product',
     initialState:{
         list:[],
         isLoading:false,
-        error:''
+        isError:''
     },
    
-    extraReducers:(builder)=>{
-        builder.
-        addCase(fetchProducts.pending,(state)=>{
-            state.isLoading=true
-        }).addCase(fetchProducts.fulfilled,(state,action)=>{
-            state.isLoading = false
-            state.list = action.payload
-            state.error=""
-        }).addCase(fetchProducts.rejected,(state,action)=>{
-            state.isLoading = false
-            state.error = action.payload || 'something went wrong'
-        })
-    }
+    // extraReducers:(builder)=>{
+    //     console.log(builder)
+    //     builder.
+    //     addCase(fetchProducts.pending,(state)=>{
+    //         state.isLoading=true
+    //     }).addCase(fetchProducts.fulfilled,(state,action)=>{
+    //         state.isLoading = false
+    //         state.list = action.payload
+    //         state.error=""
+    //     }).addCase(fetchProducts.rejected,(state,action)=>{
+    //         state.isLoading = false
+    //         state.error = action.payload || 'something went wrong'
+    //     })
+    // }
 
     
 

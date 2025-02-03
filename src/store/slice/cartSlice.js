@@ -23,8 +23,29 @@ const cartSlice = createSlice({
         state.list.push({ ...action.payload, quantity: 1 });
       }
     },
+    incrementQuantity(state,action){
+      const existingItemIndex = findItemIndex(state.list,action);
+      if (existingItemIndex !== -1) {
+        // If exists, increase the quantity
+        state.list[existingItemIndex].quantity += 1;
+      }
+
+    },
+    decrementQuantity(state,action){
+      const existingItemIndex = findItemIndex(state.list,action);
+      console.log(existingItemIndex)
+      state.list[existingItemIndex].quantity -=1;
+      if (state.list[existingItemIndex].quantity ===0  ){
+        
+          state.list.splice(existingItemIndex , 1)
+        
+      }
+    },
+    removeFromCartList(state,action){      
+      state.list=state.list.filter((item)=>action.payload.productId !== item.productId )
+    }
   },
 });
 
-export const { addToCart } = cartSlice.actions;
+export const { addToCart,removeFromCartList,incrementQuantity,decrementQuantity } = cartSlice.actions;
 export default cartSlice.reducer;

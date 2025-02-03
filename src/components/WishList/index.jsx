@@ -1,5 +1,6 @@
 // import React from 'react'
 import { useDispatch, useSelector } from "react-redux";
+import ClearOutlined from "@mui/icons-material/ClearOutlined";
 import {
   Heading,
   List,
@@ -13,6 +14,7 @@ import {
 
 import { removeFromWishList } from "../../store/slice/wishListSlice";
 import Header from "../Header";
+import { addToCart } from "../../store/slice/cartSlice";
 
 function WishList() {
   const dispatch = useDispatch();
@@ -39,63 +41,89 @@ function WishList() {
   };
 
   return (
-    <>  
-    <Header/>
-      <GlobalStyles/>
-    <WishListContainer
-   
-      style={
-        theme
-          ? {
-              color: dark.color,
-              backgroundColor: dark.backgroundColor,
-              transition: dark.transition,
-              // border:dark.border
-            }
-          : {
-              color: light.color,
-              backgroundColor: light.backgroundColor,
-              transition: light.transition,
-              // border:light.border
-            }
-      }
-    >
-       <GlobalStyles/>
-      <Heading>Your Wish List</Heading>
-      <UnorderedList>
-        {wishList.length === 0 ? (
-          <List>Your wish list is empty</List>
-        ) : (
-          wishList.map((item) => (
-            <List
-              key={item.productId}
-              style={theme ? { border: dark.border } : { border: light.border }}
-            >
-              <Card>
-                <img
-                  style={{ marginRight: "20px" }}
-                  src={item.imageUrl}
-                  alt={item.title}
-                  width="100"
-                />
+    <>
+      <Header />
+      <GlobalStyles />
+      <WishListContainer
+        style={
+          theme
+            ? {
+                color: dark.color,
+                backgroundColor: dark.backgroundColor,
+                transition: dark.transition,
+                // border:dark.border
+              }
+            : {
+                color: light.color,
+                backgroundColor: light.backgroundColor,
+                transition: light.transition,
+                // border:light.border
+              }
+        }
+      >
+        
+        <GlobalStyles />
+        <Heading>Your Wish List</Heading>
+        <UnorderedList>
+          {wishList.length === 0 ? (
+            <List>Your wish list is empty</List>
+          ) : (
+            wishList.map((item) => (
+              <List
+                key={item.productId}
+                style={
+                  theme ? { border: dark.border } : { border: light.border }
+                }
+              >
+                <Card>
+                  <img
+                    style={{ marginRight: "20px" }}
+                    src={item.imageUrl}
+                    alt={item.title}
+                    width="100px"
+                  />
 
-                <div>
-                  <Cardheading>{item.title}</Cardheading>
+                  <div>
+                    <Cardheading>{item.title}</Cardheading>
 
-                  <Button style={theme ? {color:dark.color}:{ color:light.color}}
-                    onClick={() => handleRemoveFromWishList(item.productId)}
-                  >
-                    Remove
-                  </Button>
-                </div>
-              </Card>
-            </List>
-          ))
-        )}
-      </UnorderedList>
-    </WishListContainer>
+                    <button
+                      style={{
+                        backgroundColor: "none",
+                        border: "none",
+                        position: "absolute",
+                        top: "10px",
+                        right: "10px",
+                      }}
+                      onClick={() => handleRemoveFromWishList(item.productId)}
+                    >
+                      <ClearOutlined  />
+                    </button>
+                    <Button
+                      onClick={() => {
+                        dispatch(
+                          addToCart({
+                            productId: item.productId,
+                            title: item.title,
+                            imageUrl: item.imageUrl,
+                            rating: item.rating,
+                            price: item.price,
+                            category: item.category,
+                            count: item.rating.count,
+                          })
+                        ),
+                        dispatch(removeFromWishList({productId:item.productId }))
+                      }}
+                    >
+                      Move to cart
+                    </Button>
+                  </div>
+                </Card>
+              </List>
+            ))
+          )}
+        </UnorderedList>
+      </WishListContainer>
     </>
-
   );
 }
 export default WishList;

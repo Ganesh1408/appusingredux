@@ -17,8 +17,8 @@ export const WishListContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin:auto;
-  margin-top:90px;
   position: relative;
+  padding-top:100px;
   
   
   
@@ -26,8 +26,9 @@ export const WishListContainer = styled.div`
 
 export const Heading = styled.h2`
   text-align: center;
-  /* position:sticky;
-    top:120px; */
+  position:sticky;
+    top:100px;
+    z-index:100;
 `;
 
 export const UnorderedList = styled.ul`
@@ -55,6 +56,7 @@ export const List = styled.li`
   justify-content:center;
   align-items:center;
   border-radius:16px;
+  position:relative;
   
  
 `;
@@ -65,6 +67,7 @@ export const Card = styled.div`
 flex-direction:row;
   justify-content: space-between;
   align-items: center;
+  
   
 
 

@@ -2,14 +2,17 @@
 
 import { useSelector } from "react-redux";
 import ProductCard from "../ProductCard";
-import { SectionContainer, GlobalStyles } from "./styledComponent";
+import { SectionContainer, GlobalStyles, Button } from "./styledComponent";
 // import { createSelector } from "@reduxjs/toolkit";
-import {
-  getProductList,
-  getProductLoadingState,
-  getProductErrorState,
-} from "../../store/slice/productSlice";
+// import {
+//   getProductList,
+//   getProductLoadingState,
+//   getProductErrorState,
+// } from "../../store/slice/productSlice";
 import Header from "../Header";
+import { useUpdateProductsQuery } from "../../store/apiSlice";
+import ProductShimmer from "../ProductShimmer";
+
 
 const dark = {
   color: "white",
@@ -27,22 +30,28 @@ const light = {
 
 function Products() {
   const theme = useSelector((state) => state.theme.theme);
-  const ProductsList = useSelector(getProductList);
-  
+  // const ProductsList = useSelector(getProductList);
 
-  const Loading = useSelector(getProductLoadingState);
-  const Error = useSelector(getProductErrorState);
+  const { data, isError, isLoading, error } = useUpdateProductsQuery();
+  // console.log(isError.error)
+  const a = useUpdateProductsQuery();
+  console.log(a);
+
+  // const Loading = useSelector(getProductLoadingState);
+  // const Error = useSelector(getProductErrorState);
+  // console.log(data.from({length:5},(_,i)=>(i+1)))
 
   return (
     <>
-    <Header/>
+      <Header />
       <GlobalStyles />
-      {Loading ? (
+
+      {isLoading ? (
+        <ProductShimmer/>
+      ) : isError ? (
         <h1 style={{ textAlign: "center", marginTop: "100px" }}>
-          Loading.....
+          {error.error || "something went wrong"}
         </h1>
-      ) : Error ? (
-        <h1 style={{ textAlign: "center", marginTop: "100px" }}>{Error}</h1>
       ) : (
         <SectionContainer
           style={
@@ -60,18 +69,33 @@ function Products() {
                 }
           }
         >
-          {ProductsList.map(({ id, title, rating, price, image }) => {
-            return (
-              <ProductCard
-                key={id}
-                productId={id}
-                title={title}
-                rating={rating.rate}
-                price={price}
-                imageUrl={image}
-              />
-            );
-          })}
+          
+            <Button
+              style={
+                theme
+                  ? {
+                      backgroundColor: light.backgroundColor,
+                      color: light.color,
+                    }
+                  : { backgroundColor: dark.backgroundColor, color: dark.color }
+              }
+            >
+              help ?
+            </Button>
+            {data.map(({ id, title, rating, price, image }) => {
+              return (
+                <ProductCard
+                  key={id}
+                  productId={id}
+                  title={title}
+                  rating={rating.rate}
+                  count={rating.count}
+                  price={price}
+                  imageUrl={image}
+                />
+              );
+            })}
+          
         </SectionContainer>
       )}
     </>
