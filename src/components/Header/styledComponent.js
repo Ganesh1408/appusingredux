@@ -29,7 +29,7 @@ export const StyledHeader=styled.header`
     max-width:1700px;
     max-height:100px;
  
-    margin:auto;
+    /* margin:auto; */
     
     height:70px;
     padding:10px;
@@ -38,7 +38,7 @@ export const StyledHeader=styled.header`
     left:0;
     right:0;
     box-shadow:0px 0px 6px 1px ;
-    opacity:0.9;
+    /* opacity:0.9; */
     z-index:1000;
     
 

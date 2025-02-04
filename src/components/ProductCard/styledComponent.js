@@ -13,7 +13,7 @@ export const ProductContainer = styled.div`
     margin: 16px 16px;
     border-radius:10px;
     position:relative;
-    top:140px;
+    top:40px;
     padding:10px;
     
     
