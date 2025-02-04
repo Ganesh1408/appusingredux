@@ -128,7 +128,7 @@ const [currentPage,setCurrentPage]= useState(0)
          {Array.from({ length: no_of_pages }, (_, i) => i + 1).map(
            (each) => (
            
-             <PaginationButton onClick = {()=>setCurrentPage(each-1)} key={each}>{each}</PaginationButton>
+             <PaginationButton active ={currentPage === each -1} onClick = {()=>setCurrentPage(each-1)} key={each}>{each}</PaginationButton>
             
            )
          )}

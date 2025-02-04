@@ -51,10 +51,12 @@ font-size:12px;
   margin-bottom: 20px;
   /* background:transparent; */
   font-size: 12px;
+  border:${({active})=>(active ? "3px solid red":"")} ;
 `;
 export const PageContainer = styled.div`
   margin:auto;
   cursor: pointer;
+  
   
   /* margin-top:160px; */
   /* margin-top: none; */
