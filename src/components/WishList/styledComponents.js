@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
 export const GlobalStyles = styled.div`
-    body{
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
      
     }
 
@@ -45,10 +48,10 @@ export const UnorderedList = styled.ul`
 
 export const List = styled.li`
   list-style-type: none;
-  /* width: 100%; */
-  width:300px;
-  height:200px;
-  /* border: 1px solid black; */
+  
+  width:350px;
+  height:200px; 
+  
   padding: 20px;
 
   margin: 10px;

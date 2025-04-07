@@ -1,10 +1,10 @@
 
-
+import React, { Suspense } from 'react'
 import './App.css'
 import { BrowserRouter, Route ,Switch } from 'react-router-dom'
 import Products from './components/products'
-import WishList from './components/WishList'
-import CartList from './components/cartList'
+const WishList = React.lazy(()=>import  ('./components/WishList'))
+const CartList = React.lazy (()=>import ( './components/cartList'))
 
 
 function App() {
@@ -14,8 +14,11 @@ return(
     <Switch>
 
     <Route exact path="/products" component={Products}/>
-    <Route exact path="/wishList" component={WishList}/>
-    <Route exact path="/Cart" component = {CartList}/>
+    <Suspense fallback={<div>Loading...</div>}>
+        <Route exact path="/wishList" component={WishList}/>
+        <Route exact path="/Cart" component = {CartList}/>
+    </Suspense>
+    
     
     </Switch>
     

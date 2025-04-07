@@ -53,7 +53,7 @@ export const UnorderedList = styled.ul`
 export const List = styled.li`
   list-style-type: none;
 
-  width: 300px;
+  width: 350px;
   height: 200px;
 
   padding: 20px;
@@ -146,7 +146,7 @@ export const ProceedButton = styled.button`
   border-radius:60px;
   position: absolute;
   right: 40px;
-  bottom: 60px;
+  bottom: 40px;
   &:hover{
     background-color:
   }

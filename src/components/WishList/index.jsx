@@ -66,7 +66,7 @@ function WishList() {
         <Heading>Your Wish List</Heading>
         <UnorderedList>
           {wishList.length === 0 ? (
-            <List>Your wish list is empty</List>
+            <p>Your wish list is empty</p>
           ) : (
             wishList.map((item) => (
               <List
@@ -77,7 +77,7 @@ function WishList() {
               >
                 <Card>
                   <img
-                    style={{ marginRight: "20px" }}
+                    style={{ margin: "20px" }}
                     src={item.imageUrl}
                     alt={item.title}
                     width="100px"

@@ -60,7 +60,8 @@ export const Button = styled.button`
     border-radius:10px;
     border:none;
     margin-top:5px;
-    margin-right:10px;
+    
+    
     
     
 
@@ -76,4 +77,5 @@ export const ButtonsContainer=styled.div`
     display:flex;
     justify-content:space-evenly;
     align-items:center;
+    gap:10px;
 `

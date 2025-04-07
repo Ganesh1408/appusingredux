@@ -2,26 +2,29 @@ import styled from "styled-components";
 
 export const GlobalStyles = styled.div`
   body {
+    overflow-x:hidden;
+    max-width:100vw;
   }
-`;
+`
 
 export const SectionContainer = styled.section`
-  min-width:1160px;
-  max-height:800px;
+  max-width:100vw;
+  width:100%;
+  max-height:740px;
   height:100vh;
-  /* width:100%; */
-  border: "none";
   display: flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
+  overflow-x:hidden !important;
   
   
   /* scroll-behavior:smooth; */
 `;
 export const CardsContainer= styled.div`
-height:100%;
+height:100vh;
 width:100%;
+max-width:100vw;
   display:flex;
   justify-content: center;
   align-items: center;

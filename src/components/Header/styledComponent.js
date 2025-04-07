@@ -9,7 +9,7 @@ import '@fontsource/roboto/700.css';
 
 
 export const GlobalStyles = createGlobalStyle`
-body{
+*{
     padding:0;
     margin:0;
     box-sizing:border-box;
@@ -25,12 +25,13 @@ export const StyledHeader=styled.header`
     display:flex;
     justify-content:space-around;
     align-items:center;
-    width:100%;
-    max-width:1700px;
+    
+    max-width:1600px;
+    width:100vw;
     max-height:100px;
  
     /* margin:auto; */
-    
+    margin:0px auto;
     height:70px;
     padding:10px;
     position:fixed;

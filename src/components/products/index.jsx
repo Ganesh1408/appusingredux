@@ -19,7 +19,7 @@ const dark = {
   color: "white",
   backgroundColor: "black",
   border: "1px solid white",
-  transition: "0.35s ease-in-out",
+  transition: " backgroundColor 0.35s ease-in-out color:0.35s ease-in-out",
 };
 
 const light = {
